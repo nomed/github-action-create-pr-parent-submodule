@@ -54,6 +54,7 @@ runs:
     uses: actions/github-script@v6
     with:
       github-token: ${{ inputs.github_token }}
+      debug: true
       script: |
         await github.rest.pulls.create({
           owner: '${{ inputs.owner }}',
