@@ -48,7 +48,7 @@ runs:
       git submodule update --remote
       git checkout -b $GITHUB_RUN_ID
       git commit -am "updating submodules"
-      git push --set-upstream origin $GITHUB_RUN_ID
+      git push --set-upstream origin $GITHUB_REPOSITORY-$GITHUB_REF_NAME
 
   - name: Create pull request against target branch
     uses: actions/github-script@v6
