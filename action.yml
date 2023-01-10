@@ -58,8 +58,7 @@ runs:
       script: |
         await github.rest.pulls.create({
           owner: '${{ inputs.owner }}',
-          repo: '${{ inputs.parent_repository }}',
-          head: process.env.GITHUB_REPOSITORY+'-'+process.env.GITHUB_REF_NAME,
+          repo: '${{ inputs.parent_repository }}',          
           base: '${{ inputs.pr_against_branch }}',
           title: `[Auto-generated] Submodule Updates ${process.env.GITHUB_RUN_ID}`,
           body: `[Auto-generated] Submodule Updates ${process.env.GITHUB_RUN_ID}`,
