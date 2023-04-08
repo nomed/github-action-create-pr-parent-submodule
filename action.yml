@@ -53,8 +53,8 @@ runs:
       
       git checkout -b $GITHUB_REPOSITORY-$GITHUB_REF_NAME
       ls -la
+      git submodule update --remote $BASEPATH      
       cd $BASEPATH 
-      git pull
       git checkout $GITHUB_REF_NAME
       cd $GITHUB_WORKSPACE
       git commit -am "deps: $GITHUB_REPOSITORY ( $GITHUB_REF_NAME )"
