@@ -56,7 +56,7 @@ runs:
       cd $BASEPATH 
       git checkout $GITHUB_REF_NAME
       cd $GITHUB_WORKSPACE
-      git commit -am "deps: "$GITHUB_REPOSITORY ( $GITHUB_REF_NAME )"
+      git commit -am "deps: $GITHUB_REPOSITORY ( $GITHUB_REF_NAME )"
       git push --set-upstream origin $GITHUB_REPOSITORY-$GITHUB_REF_NAME
 
   - name: Create pull request against target branch
