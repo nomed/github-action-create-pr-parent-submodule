@@ -27,6 +27,9 @@ inputs:
     description: 'Create Release Environment label'
     required: false
     default: 'autorelease: tagged'
+  submodule_path:
+    description: 'Path of the submodule'
+    required: true
   
 runs:
   using: 'composite'
@@ -42,12 +45,17 @@ runs:
 
   - name: Create new branch and push changes
     shell: bash
-    run: |
+    env:
+      BASEPATH: ${{inputs.submodule_path}}
+    run: |      
       git config user.name github-actions
       git config user.email github-actions@github.com
       git submodule update --remote
       git checkout -b $GITHUB_REPOSITORY-$GITHUB_REF_NAME
-      git commit -am "updating submodules"
+      cd $BASPATH 
+      git checkout $GITHUB_REF_NAME
+      cd $GITHUB_WORKSPACE
+      git commit -am "deps: "$GITHUB_REPOSITORY ( $GITHUB_REF_NAME )"
       git push --set-upstream origin $GITHUB_REPOSITORY-$GITHUB_REF_NAME
 
   - name: Create pull request against target branch
