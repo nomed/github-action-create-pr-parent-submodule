@@ -52,6 +52,7 @@ runs:
       git config user.email github-actions@github.com
       git submodule update --remote
       git checkout -b $GITHUB_REPOSITORY-$GITHUB_REF_NAME
+      ls -la
       cd $BASEPATH 
       git checkout $GITHUB_REF_NAME
       cd $GITHUB_WORKSPACE
