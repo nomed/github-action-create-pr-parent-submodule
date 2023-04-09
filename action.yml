@@ -84,7 +84,7 @@ runs:
           owner: '${{ inputs.owner }}',
           repo: '${{ inputs.parent_repository }}'.split('/')[1].trim(),
         });
-        const pr = res.data.filter(i => i.title.includes(`chore(deps): update `+process.env.GITHUB_REPOSITORY+` submodule to `+process.env.GITHUB_REF_NAME));
+        const pr = res.data.filter(i => i.title.includes(`fix(deps): update `+process.env.GITHUB_REPOSITORY+` submodule to `+process.env.GITHUB_REF_NAME));
         const prNumber = pr[0].number;  
         await github.rest.issues.addLabels({
           issue_number: prNumber,
